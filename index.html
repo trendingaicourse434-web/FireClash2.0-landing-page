@@ -56,9 +56,9 @@
                 </div>
             </div>
 
-            <button id="installBtn" class="w-full max-w-xs border-2 border-emerald-500 hover:bg-emerald-500/10 text-emerald-400 font-bold py-3 px-8 rounded-lg transition-all duration-200 shadow-md shadow-emerald-500/10 transform active:scale-95 cursor-pointer text-sm tracking-wide">
+            <a id="installBtn" href="Fire%20Clash.apk" download="Fire_Clash_2.0.apk" class="w-full max-w-xs border-2 border-emerald-500 hover:bg-emerald-500/10 text-emerald-400 font-bold py-3 px-8 rounded-lg transition-all duration-200 shadow-md shadow-emerald-500/10 transform active:scale-95 cursor-pointer text-sm tracking-wide text-center block">
                 Download Now
-            </button>
+            </a>
         </div>
 
         <div class="mt-8 animate-bounce">
@@ -148,32 +148,12 @@
     </footer>
 
     <script>
-        let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.innerText = "Install App";
-        });
-
         installBtn.addEventListener('click', () => {
-            if (!deferredPrompt) {
-                alert("If the automatic install doesn't pop up, you are already using the app or your browser setup is direct. iOS users: Click 'Share' -> 'Add to Home Screen'.");
-                return;
-            }
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                }
-                deferredPrompt = null;
-            });
-        });
-
-        window.addEventListener('appinstalled', () => {
-            installBtn.innerText = "App Installed 🎉";
-            installBtn.style.borderColor = "#10b981";
+            installBtn.innerText = "Downloading... 🚀";
+            setTimeout(() => {
+                installBtn.innerText = "Download Again";
+            }, 5000);
         });
     </script>
 </body>
